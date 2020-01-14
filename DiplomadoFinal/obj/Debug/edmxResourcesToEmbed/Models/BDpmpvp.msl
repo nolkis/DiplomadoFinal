@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="pmpvpModelStoreContainer" CdmEntityContainer="pmpvpbd">
+    <EntitySetMapping Name="Anoescolar">
+      <EntityTypeMapping TypeName="pmpvpModel.Anoescolar">
+        <MappingFragment StoreEntitySet="Anoescolar">
+          <ScalarProperty Name="Ano_EscolarID" ColumnName="Ano_EscolarID" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asignatura">
+      <EntityTypeMapping TypeName="pmpvpModel.Asignatura">
+        <MappingFragment StoreEntitySet="Asignatura">
+          <ScalarProperty Name="AsignaturaID" ColumnName="AsignaturaID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="CursoID" ColumnName="CursoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Calificacion">
+      <EntityTypeMapping TypeName="pmpvpModel.Calificacion">
+        <MappingFragment StoreEntitySet="Calificacion">
+          <ScalarProperty Name="CalificacionID" ColumnName="CalificacionID" />
+          <ScalarProperty Name="Calificacion1" ColumnName="Calificacion1" />
+          <ScalarProperty Name="Calificacion2" ColumnName="Calificacion2" />
+          <ScalarProperty Name="Calificacion3" ColumnName="Calificacion3" />
+          <ScalarProperty Name="Calificacion4" ColumnName="Calificacion4" />
+          <ScalarProperty Name="Calificacion_Final" ColumnName="Calificacion_Final" />
+          <ScalarProperty Name="IncripcionCursoID" ColumnName="IncripcionCursoID" />
+          <ScalarProperty Name="AsignaturaID" ColumnName="AsignaturaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Curso">
+      <EntityTypeMapping TypeName="pmpvpModel.Curso">
+        <MappingFragment StoreEntitySet="Curso">
+          <ScalarProperty Name="CursoID" ColumnName="CursoID" />
+          <ScalarProperty Name="Grado" ColumnName="Grado" />
+          <ScalarProperty Name="SeccionID" ColumnName="SeccionID" />
+          <ScalarProperty Name="Ano_EscolarID" ColumnName="Ano_EscolarID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IncripcionCurso">
+      <EntityTypeMapping TypeName="pmpvpModel.IncripcionCurso">
+        <MappingFragment StoreEntitySet="IncripcionCurso">
+          <ScalarProperty Name="IncripcionCursoID" ColumnName="IncripcionCursoID" />
+          <ScalarProperty Name="CursoID" ColumnName="CursoID" />
+          <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Perfil">
+      <EntityTypeMapping TypeName="pmpvpModel.Perfil">
+        <MappingFragment StoreEntitySet="Perfil">
+          <ScalarProperty Name="PerfilID" ColumnName="PerfilID" />
+          <ScalarProperty Name="Perfil_Usuario" ColumnName="Perfil_Usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seccion">
+      <EntityTypeMapping TypeName="pmpvpModel.Seccion">
+        <MappingFragment StoreEntitySet="Seccion">
+          <ScalarProperty Name="SeccionID" ColumnName="SeccionID" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sexo">
+      <EntityTypeMapping TypeName="pmpvpModel.Sexo">
+        <MappingFragment StoreEntitySet="Sexo">
+          <ScalarProperty Name="SexoID" ColumnName="SexoID" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="pmpvpModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="SexoID" ColumnName="SexoID" />
+          <ScalarProperty Name="Nacimiento" ColumnName="Nacimiento" />
+          <ScalarProperty Name="Nombre_Usuaro" ColumnName="Nombre_Usuaro" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="PerfilID" ColumnName="PerfilID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

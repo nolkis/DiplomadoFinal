@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pmpvpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Anoescolar">
+    <Key>
+      <PropertyRef Name="Ano_EscolarID" />
+    </Key>
+    <Property Name="Ano_EscolarID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Curso" Relationship="Self.FK_Curso_Anoescolar" FromRole="Anoescolar" ToRole="Curso" />
+  </EntityType>
+  <EntityType Name="Asignatura">
+    <Key>
+      <PropertyRef Name="AsignaturaID" />
+    </Key>
+    <Property Name="AsignaturaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CursoID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Curso" Relationship="Self.FK_Asignatura_Curso" FromRole="Asignatura" ToRole="Curso" />
+    <NavigationProperty Name="Calificacion" Relationship="Self.FK_Calificacion_Asignatura" FromRole="Asignatura" ToRole="Calificacion" />
+  </EntityType>
+  <EntityType Name="Calificacion">
+    <Key>
+      <PropertyRef Name="CalificacionID" />
+    </Key>
+    <Property Name="CalificacionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Calificacion1" Type="Double" Nullable="false" />
+    <Property Name="Calificacion2" Type="Double" Nullable="false" />
+    <Property Name="Calificacion3" Type="Double" Nullable="false" />
+    <Property Name="Calificacion4" Type="Double" Nullable="false" />
+    <Property Name="Calificacion_Final" Type="Double" Nullable="false" />
+    <Property Name="IncripcionCursoID" Type="Int32" Nullable="false" />
+    <Property Name="AsignaturaID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Asignatura" Relationship="Self.FK_Calificacion_Asignatura" FromRole="Calificacion" ToRole="Asignatura" />
+    <NavigationProperty Name="IncripcionCurso" Relationship="Self.FK_Calificacion_IncripcionCurso" FromRole="Calificacion" ToRole="IncripcionCurso" />
+  </EntityType>
+  <EntityType Name="Curso">
+    <Key>
+      <PropertyRef Name="CursoID" />
+    </Key>
+    <Property Name="CursoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Grado" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SeccionID" Type="Int32" Nullable="false" />
+    <Property Name="Ano_EscolarID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Anoescolar" Relationship="Self.FK_Curso_Anoescolar" FromRole="Curso" ToRole="Anoescolar" />
+    <NavigationProperty Name="Asignatura" Relationship="Self.FK_Asignatura_Curso" FromRole="Curso" ToRole="Asignatura" />
+    <NavigationProperty Name="Seccion" Relationship="Self.FK_Curso_Seccion" FromRole="Curso" ToRole="Seccion" />
+    <NavigationProperty Name="IncripcionCurso" Relationship="Self.FK_IncripcionCurso_Curso" FromRole="Curso" ToRole="IncripcionCurso" />
+  </EntityType>
+  <EntityType Name="IncripcionCurso">
+    <Key>
+      <PropertyRef Name="IncripcionCursoID" />
+    </Key>
+    <Property Name="IncripcionCursoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CursoID" Type="Int32" Nullable="false" />
+    <Property Name="UsuarioID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Calificacion" Relationship="Self.FK_Calificacion_IncripcionCurso" FromRole="IncripcionCurso" ToRole="Calificacion" />
+    <NavigationProperty Name="Curso" Relationship="Self.FK_IncripcionCurso_Curso" FromRole="IncripcionCurso" ToRole="Curso" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_IncripcionCurso_Usuario" FromRole="IncripcionCurso" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Perfil">
+    <Key>
+      <PropertyRef Name="PerfilID" />
+    </Key>
+    <Property Name="PerfilID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Perfil_Usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Perfil" FromRole="Perfil" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Seccion">
+    <Key>
+      <PropertyRef Name="SeccionID" />
+    </Key>
+    <Property Name="SeccionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Curso" Relationship="Self.FK_Curso_Seccion" FromRole="Seccion" ToRole="Curso" />
+  </EntityType>
+  <EntityType Name="Sexo">
+    <Key>
+      <PropertyRef Name="SexoID" />
+    </Key>
+    <Property Name="SexoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Sexo" FromRole="Sexo" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="UsuarioID" />
+    </Key>
+    <Property Name="UsuarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombres" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Apellidos" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SexoID" Type="Int32" Nullable="false" />
+    <Property Name="Nacimiento" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Nombre_Usuaro" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Clave" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PerfilID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="IncripcionCurso" Relationship="Self.FK_IncripcionCurso_Usuario" FromRole="Usuario" ToRole="IncripcionCurso" />
+    <NavigationProperty Name="Perfil" Relationship="Self.FK_Usuario_Perfil" FromRole="Usuario" ToRole="Perfil" />
+    <NavigationProperty Name="Sexo" Relationship="Self.FK_Usuario_Sexo" FromRole="Usuario" ToRole="Sexo" />
+  </EntityType>
+  <Association Name="FK_Curso_Anoescolar">
+    <End Role="Anoescolar" Type="Self.Anoescolar" Multiplicity="1" />
+    <End Role="Curso" Type="Self.Curso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Anoescolar">
+        <PropertyRef Name="Ano_EscolarID" />
+      </Principal>
+      <Dependent Role="Curso">
+        <PropertyRef Name="Ano_EscolarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asignatura_Curso">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+    <End Role="Asignatura" Type="Self.Asignatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="CursoID" />
+      </Principal>
+      <Dependent Role="Asignatura">
+        <PropertyRef Name="CursoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Calificacion_Asignatura">
+    <End Role="Asignatura" Type="Self.Asignatura" Multiplicity="1" />
+    <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asignatura">
+        <PropertyRef Name="AsignaturaID" />
+      </Principal>
+      <Dependent Role="Calificacion">
+        <PropertyRef Name="AsignaturaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Calificacion_IncripcionCurso">
+    <End Role="IncripcionCurso" Type="Self.IncripcionCurso" Multiplicity="1" />
+    <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IncripcionCurso">
+        <PropertyRef Name="IncripcionCursoID" />
+      </Principal>
+      <Dependent Role="Calificacion">
+        <PropertyRef Name="IncripcionCursoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Curso_Seccion">
+    <End Role="Seccion" Type="Self.Seccion" Multiplicity="1" />
+    <End Role="Curso" Type="Self.Curso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seccion">
+        <PropertyRef Name="SeccionID" />
+      </Principal>
+      <Dependent Role="Curso">
+        <PropertyRef Name="SeccionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IncripcionCurso_Curso">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+    <End Role="IncripcionCurso" Type="Self.IncripcionCurso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="CursoID" />
+      </Principal>
+      <Dependent Role="IncripcionCurso">
+        <PropertyRef Name="CursoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IncripcionCurso_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="IncripcionCurso" Type="Self.IncripcionCurso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="IncripcionCurso">
+        <PropertyRef Name="UsuarioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Perfil">
+    <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfil">
+        <PropertyRef Name="PerfilID" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="PerfilID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Sexo">
+    <End Role="Sexo" Type="Self.Sexo" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sexo">
+        <PropertyRef Name="SexoID" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="SexoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="pmpvpbd" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Anoescolar" EntityType="Self.Anoescolar" />
+    <EntitySet Name="Asignatura" EntityType="Self.Asignatura" />
+    <EntitySet Name="Calificacion" EntityType="Self.Calificacion" />
+    <EntitySet Name="Curso" EntityType="Self.Curso" />
+    <EntitySet Name="IncripcionCurso" EntityType="Self.IncripcionCurso" />
+    <EntitySet Name="Perfil" EntityType="Self.Perfil" />
+    <EntitySet Name="Seccion" EntityType="Self.Seccion" />
+    <EntitySet Name="Sexo" EntityType="Self.Sexo" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <AssociationSet Name="FK_Curso_Anoescolar" Association="Self.FK_Curso_Anoescolar">
+      <End Role="Anoescolar" EntitySet="Anoescolar" />
+      <End Role="Curso" EntitySet="Curso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asignatura_Curso" Association="Self.FK_Asignatura_Curso">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="Asignatura" EntitySet="Asignatura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Calificacion_Asignatura" Association="Self.FK_Calificacion_Asignatura">
+      <End Role="Asignatura" EntitySet="Asignatura" />
+      <End Role="Calificacion" EntitySet="Calificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Calificacion_IncripcionCurso" Association="Self.FK_Calificacion_IncripcionCurso">
+      <End Role="IncripcionCurso" EntitySet="IncripcionCurso" />
+      <End Role="Calificacion" EntitySet="Calificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Curso_Seccion" Association="Self.FK_Curso_Seccion">
+      <End Role="Seccion" EntitySet="Seccion" />
+      <End Role="Curso" EntitySet="Curso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IncripcionCurso_Curso" Association="Self.FK_IncripcionCurso_Curso">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="IncripcionCurso" EntitySet="IncripcionCurso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IncripcionCurso_Usuario" Association="Self.FK_IncripcionCurso_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="IncripcionCurso" EntitySet="IncripcionCurso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Perfil" Association="Self.FK_Usuario_Perfil">
+      <End Role="Perfil" EntitySet="Perfil" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Sexo" Association="Self.FK_Usuario_Sexo">
+      <End Role="Sexo" EntitySet="Sexo" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

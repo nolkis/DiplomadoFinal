@@ -1,0 +1,75 @@
+﻿@model DiplomadoFinal.Models.Calificacion
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Calificacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Calificacion1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Calificacion1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Calificacion2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Calificacion2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Calificacion3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Calificacion3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Calificacion4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Calificacion4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Calificacion_Final)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Calificacion_Final)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Asignatura.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asignatura.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IncripcionCurso.IncripcionCursoID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncripcionCurso.IncripcionCursoID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CalificacionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
